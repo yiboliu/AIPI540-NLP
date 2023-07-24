@@ -169,13 +169,15 @@ def launch_training_dl(dataloaders, dataset_sizes, vocab, model_path, vocab_path
         pickle.dump(vocab, f)
 
 
-def serve_model_dl(model_path, vocab, input):
+def serve_model_dl(model_path, vocab_path, sentence):
+    with open(vocab_path, 'rb') as f:
+        vocab = pickle.load(f)
     mapping = {2: 'positive', 1: 'neutral', 0: 'negative'}
     model = TextClassificationModel(len(vocab), 64, 3).to(device)
     model.load_state_dict(torch.load(model_path))
     model.eval()
 
-    preprocessed = preprocess(input)
+    preprocessed = preprocess(sentence)
     words = select_words_for_each_sent(preprocessed, 2)
     nums = [vocab.get_stoi()[word] for word in words.split()]
     input = torch.tensor(nums).unsqueeze(0).to(device)

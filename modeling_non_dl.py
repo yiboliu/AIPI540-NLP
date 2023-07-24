@@ -45,15 +45,17 @@ def launch_training_nondl(data, model_path, vec_path):
         pickle.dump(vec, f)
 
 
-def serve_model_non_dl(model_path, vec, sentence):
+def serve_model_non_dl(model_path, vec_path, sentence):
     with open(model_path, 'rb') as f:
         model = pickle.load(f)
+    with open(vec_path, 'rb') as f:
+        vec = pickle.load(f)
     preprocessed = preprocess(sentence)
     words = select_words_for_each_sent(preprocessed, 2)
     trans = vec.transform([words])
     features = trans.toarray()
 
-    return model.predict(features)
+    return model.predict(features[0])
 
 
 if __name__ == "__main__":

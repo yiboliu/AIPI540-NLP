@@ -23,3 +23,7 @@ To set up the project, just install all the dependencies in the requirements.txt
 To train the deep learning model, run ``python modeling_dl.py``. This will train the model and save the related artifacts in `models/` directory for later use.
 
 To train the non deep learning model, run ``python modeling_non_dl.py``. This will train the model and save the related artifacts in `models/` directory for later use.
+
+## Demo
+
+To have a try with the demo, run ``streamlit run main.py --server.port=8080 --server.address=0.0.0.0``. (Please bear for a few seconds for it to fully start) You will see a prompt for entering a sentence and you will see the results from both DL and non DL models.
