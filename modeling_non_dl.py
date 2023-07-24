@@ -33,7 +33,7 @@ def get_stats_df(data):
     return np.mean(counts), counts.max()
 
 
-def launch_training_nondl(data, model_path):
+def launch_training_nondl(data, model_path, vec_path):
     avg, max_len = get_stats_df(df)
 
     X_train, vec = build_features(data['selected_text'], (1, max_len))
@@ -41,7 +41,8 @@ def launch_training_nondl(data, model_path):
     model = train_and_test(X_train, y_train)
     with open(model_path, 'wb') as f:
         pickle.dump(model, f)
-    return model, vec
+    with open(vec_path, 'wb') as f:
+        pickle.dump(vec, f)
 
 
 def serve_model_non_dl(model_path, vec, sentence):
@@ -58,4 +59,5 @@ def serve_model_non_dl(model_path, vec, sentence):
 if __name__ == "__main__":
     df = select_words('train.csv')
     non_dl_model_path = 'models/model-lr.pkl'
-    non_dl_model, vector = launch_training_nondl(df, non_dl_model_path)
+    vec_path = 'models/vec.pkl'
+    launch_training_nondl(df, non_dl_model_path, vec_path)
