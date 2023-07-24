@@ -32,4 +32,5 @@ To have a try with the demo, run ``streamlit run main.py --server.port=8080 --se
 
 Unfortunately, the accuracies from the both models were around 0.57 and couldn't improve. The deep learning model with a GloVe layer was even worse, 0.52. 
 I tried a bunch of different combinations of hyperparameters, and got the optimal results were around 0.57. 
+I tried a learning rate of 0.001, but the accuracy was stuck at 0.34. Then I changed the learning rate to be 1, 5, and 10, also adjusting the batch size, gemma and step sizes, the resulting accuracy barely increased over 0.57. 
 The reason I think that this result was bad is due to the size of the dataset. The vocab size was 16903, which could not provide sufficient data to train a model. 
