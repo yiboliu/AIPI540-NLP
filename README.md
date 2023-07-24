@@ -9,7 +9,7 @@ A little bit different from the description of the project on [Kaggle](https://w
 1. preprocess the words: to remove stopwords, lemmatize and extract the list of words that most effectively embody the sentiments;
 2. determine whether the extracted list of words indicate positive/negative/neutral sentiments; (In the original Kaggle project this is given)
 
-The biggest difference here is that I disregarded the column of selected words from the orignal data but use my own data. 
+The biggest difference here is that I disregarded the column of selected words from the original data but use my own data. 
 
 ## Models
 The first model is the Deep Learning model, which is trained based on a embedding layer and a fully connected linear layer. One thing to notice here is that I tried to add a pre trained GloVe layer to enhance the complexity, in order to improve the model performance, but it turned out that accuracy was lowered rather than improved. So I removed that layer and kept the simple form.

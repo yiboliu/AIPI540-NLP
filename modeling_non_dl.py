@@ -55,7 +55,7 @@ def serve_model_non_dl(model_path, vec_path, sentence):
     trans = vec.transform([words])
     features = trans.toarray()
 
-    return model.predict(features[0])
+    return model.predict(features)[0]
 
 
 if __name__ == "__main__":
