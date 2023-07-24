@@ -27,3 +27,9 @@ To train the non deep learning model, run ``python modeling_non_dl.py``. This wi
 ## Demo
 
 To have a try with the demo, run ``streamlit run main.py --server.port=8080 --server.address=0.0.0.0``. (Please bear for a few seconds for it to fully start) You will see a prompt for entering a sentence and you will see the results from both DL and non DL models.
+
+## Results Comparison
+
+Unfortunately, the accuracies from the both models were around 0.57 and couldn't improve. The deep learning model with a GloVe layer was even worse, 0.52. 
+I tried a bunch of different combinations of hyperparameters, and got the optimal results were around 0.57. 
+The reason I think that this result was bad is due to the size of the dataset. The vocab size was 16903, which could not provide sufficient data to train a model. 
